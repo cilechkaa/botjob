@@ -1,3 +1,11 @@
+import subprocess, sys
+
+for pkg in ("requests", "openpyxl"):
+    try:
+        __import__(pkg)
+    except ImportError:
+        subprocess.run([sys.executable, "-m", "pip", "install", pkg], check=False)
+
 import asyncio
 import logging
 from obabot import create_bot
@@ -20,7 +28,7 @@ async def cmd_start(message: Message):
         parse_mode="Markdown"
     )
     await message.answer("⏳ Загружаю актуальные вакансии...")
-    
+
     kb = get_vacancies_keyboard()
     if kb:
         await message.answer("Выберите интересующую вас вакансию:", reply_markup=kb)
