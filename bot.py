@@ -1,10 +1,5 @@
 import subprocess, sys
-
-for pkg in ("requests", "openpyxl"):
-    try:
-        __import__(pkg)
-    except ImportError:
-        subprocess.run([sys.executable, "-m", "pip", "install", pkg], check=False)
+subprocess.run([sys.executable, "-m", "pip", "install", "-r", "requirements.txt"], check=False)
 
 import asyncio
 import logging
@@ -13,6 +8,7 @@ from obabot.filters import CommandStart
 from obabot.types import Message
 from config import BOT_TOKEN
 from vacancies import get_vacancies_keyboard
+
 
 logging.basicConfig(level=logging.INFO)
 
