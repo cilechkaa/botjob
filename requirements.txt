@@ -2,3 +2,6 @@ obabot>=0.2.2
 aiogram>=3.0.0
 umaxbot>=0.1.7
 python-dotenv
+requests
+openpyxl
+
